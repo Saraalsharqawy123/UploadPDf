@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+   <ion-button block  (click)="Download()"> Upload Book</ion-button>
+   
+   <ion-row *ngFor="let f of files">
+   <ion-col size="6"  style="border:1px solid black" (click)="Open(f.nativeURL)">
+     {{f.name}}
+   </ion-col>
+    </ion-row>
+    <ng-container *ngIf="files.length == 0">
+        There is no Books in App , upload one.
+    </ng-container>
+
+  <ng-container *ngIf="SelectedBook">
+   <pdf-viewer [src]="bookurl" 
+   [render-text]="true"
+   [autoresize]="true"
+   style="display: block;"
+[original-size]="false"></pdf-viewer>
+
+</ng-container>
+  </div>
+</ion-content>
